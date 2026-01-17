@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>Blog</title>
+<style>
+body{background:#0b0d12;color:#eee;font-family:Arial;padding:40px;}
+a{color:#ff4fa3;text-decoration:none;}
+nav{padding:10px;background:#11131a;margin-bottom:20px;}
+nav a{margin:0 10px;color:#fff;}
+</style>
+</head>
+<body>
+<nav>
+  <a href='index.html'>Home</a>
+  <a href='about.html'>About</a>
+  <a href='services.html'>Services</a>
+  <a href='projects.html'>Projects</a>
+  <a href='pricing.html'>Pricing</a>
+  <a href='blog.html'>Blog</a>
+  <a href='contact.html'>Contact</a>
+  <a href='ebooks.html'>E‑Books</a>
+</nav>
+
+<h1>Blog</h1><p>Dark tales and fantasy lore.</p>
+
+
+<!-- AI Chat Floating Button -->
+<div id="darkAI-btn">💬</div>
+
+<!-- AI Chat Window -->
+<div id="darkAI-box">
+  <div id="darkAI-header">Dark Romance AI</div>
+  <div id="darkAI-log"></div>
+  <div id="darkAI-input">
+    <input id="darkAI-text" placeholder="Whisper your thoughts...">
+    <button onclick="darkSend()">Send</button>
+  </div>
+</div>
+
+<style>
+#darkAI-btn{
+  position:fixed;bottom:25px;right:25px;
+  background:#ff4fa3;padding:18px 22px;border-radius:50%;
+  cursor:pointer;color:#fff;font-size:22px;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);z-index:99999;
+}
+#darkAI-box{
+  position:fixed;bottom:90px;right:25px;width:340px;height:420px;
+  background:#11131a;border-radius:16px;display:none;
+  flex-direction:column;box-shadow:0 0 25px rgba(0,0,0,0.6);z-index:99999;
+}
+#darkAI-header{background:#ff4fa3;padding:12px;text-align:center;
+  color:white;font-weight:700;border-radius:16px 16px 0 0;}
+#darkAI-log{flex:1;padding:10px;overflow-y:auto;color:#eee;font-size:14px;}
+#darkAI-input{display:flex;}
+#darkAI-input input{flex:1;padding:10px;background:#1a1f2d;border:none;color:white;}
+#darkAI-input button{padding:10px;background:#ff4fa3;border:none;color:#fff;}
+</style>
+
+<script>
+function darkReply(msg){
+  const tones=[
+    "My sweet mortal… your words stir ancient cravings…",
+    "A fallen angel trembles at your voice…",
+    "The dark prince smirks, amused by your boldness…",
+    "A demon lover circles you with dangerous affection…",
+    "Soft warmth rises in my chest when you speak…",
+    "Your fantasy companion whispers back in the shadows…"
+  ];
+  return tones[Math.floor(Math.random()*tones.length)]+" "+msg;
+}
+
+document.getElementById("darkAI-btn").onclick=()=>{
+  const box=document.getElementById("darkAI-box");
+  box.style.display = box.style.display==="flex" ? "none" : "flex";
+};
+
+function darkSend(){
+  let box=document.getElementById("darkAI-log");
+  let text=document.getElementById("darkAI-text").value;
+  if(!text.trim())return;
+  box.innerHTML+=`<div><b>You:</b> ${text}</div>`;
+  document.getElementById("darkAI-text").value="";
+  setTimeout(()=>{
+    box.innerHTML+=`<div><b>AI:</b> ${darkReply(text)}</div>`;
+    box.scrollTop=box.scrollHeight;
+  },600);
+}
+</script>
+
+</body>
+</html>
